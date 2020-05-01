@@ -1,6 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
-
+/// @description Initialize controller	
 
 grid_width = 512;
 grid_height = 512;
@@ -32,28 +30,29 @@ drawing_line = false;
 source_dot = -1;
 target_dot = -1;
 
-lines = ds_list_create();
-undo_tip = ds_list_size(lines);
 
-savefile = -1;
-
-
-var reset_button = instance_create_layer(32, 32, "Instances", obj_Button);
+var reset_button = instance_create_layer(32, 32, "UI", obj_Button);
 reset_button.sprite_index = spr_ResetButton;
 reset_button.click_handler = controller_handleResetClick;
 
-var undo_button = instance_create_layer(32, 112, "Instances", obj_Button);
-undo_button.sprite_index = spr_UndoButton;
-undo_button.click_handler = controller_handleUndoClick;
+//var undo_button = instance_create_layer(32, 112, "Instances", obj_Button);
+//undo_button.sprite_index = spr_UndoButton;
+//undo_button.click_handler = controller_handleUndoClick;
 
-var redo_button = instance_create_layer(32, 192, "Instances", obj_Button);
-redo_button.sprite_index = spr_RedoButton;
-redo_button.click_handler = controller_handleRedoClick;
+//var redo_button = instance_create_layer(32, 192, "Instances", obj_Button);
+//redo_button.sprite_index = spr_RedoButton;
+//redo_button.click_handler = controller_handleRedoClick;
 
-var save_button = instance_create_layer(32, 272, "Instances", obj_Button);
-save_button.sprite_index = spr_SaveButton;
-save_button.click_handler = controller_handleSaveClick;
+//var save_button = instance_create_layer(32, 272, "Instances", obj_Button);
+//save_button.sprite_index = spr_SaveButton;
+//save_button.click_handler = controller_handleSaveClick;
 
 //var load_button = instance_create_layer(32, 272, "Instances", obj_Button);
 //load_button.sprite_index = spr_LoadButton;
 //load_button.click_handler = controller_handleLoadClick;
+
+
+actions = ds_list_create();
+actions_undo_tip = ds_list_size(actions);
+
+savefile = -1;

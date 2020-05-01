@@ -8,5 +8,6 @@ col = 0;
 row = 0;
 //
 
+lines = ds_list_create();
 dot_radius = 1;
 selected = false;

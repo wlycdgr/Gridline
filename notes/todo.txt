@@ -1,14 +1,40 @@
-* DONE reset
-* DONE Undo & Redo
-	* undo erases last line. next undo erases the second to last one, etc
-	* redo restores oldest undo
-	* any action other than redo after undo reset undo/redo head to the front
+* Implement action-history-based change tracking system
+	* When the users draws a line,
+		* 'from' Dot instance creates a Line instance and saves a reference to it in a list it maintains.
+			the Dot instance set the locations of itself and the 'to' Dot as properties on the Line instance,
+			so the Line can draw itself
+		* the controller deletes all action list entries that have an index higher than the current undo pointer value
+			(i.e. we drop any redo history)
+		* the controller then adds an object to the end of the action list. the object has the following shape:
+			{
+				action: 'drawLine'
+				from: [3, 2]
+				to: [4, 4]
+			}
+			Q: figure out how to implement this using the data structures available in GMS2
+		* finally, the controller sets the undo pointer value to the index of the new object
+		
+	* When the user hits undo,
+		* Check if the under pointer value is negative. If so, there are no items left to undo, so return.
+		* Get the action at the current undo pointer value index.
+		* If that action is 'drawLine',
+			* Get the 'from' value from the action and find the matching Dot instance
+			* Get the 'to' value from the action and ask the 'from' Dot instance to delete the line
+				with that 'to' value
+			* the Dot instance iterates through its Lines, checks each Line's 'to' value, and destroys
+				the right one when it finds it
+		* Decrement the undo pointer value index
+
+
 * Replace Reset with New
 	* If there are unsaved changes, prompt user to save them
 		* Implement mechanism for tracking whether we have unsaved changes
-			* Load savefile
-			* Compare data in savefile with what would be written if we saved right now
-			* If the match is not perfect, we have unsaved changes
+			* Undo reduces action counter by 1
+			* Redo increases action counter by 1
+			* Drawing a line increases action counter by 1
+			* Save is necessary if.... 
+				* action count is not 0 
+				* OR any redo history has been destroyed since last save
 	* If user decides to save,
 		* If they have saved this drawing, save changes to same file
 		* If they have not saved this drawing at all yet, open file picker, then save to chosen file
@@ -26,8 +52,16 @@
 		* Undo/redo history is not affected by saving
 * Select & delete lines
 * Toggle dot grid on and off
-* DONE Restart
+
 * Export to PNG
 * Do not allow duplicate lines
 * Make grid size adjustable
 	* Make sure the grid size is saved
+	
+
+* DONE Restart
+* DONE reset
+* DONE Undo & Redo
+	* undo erases last line. next undo erases the second to last one, etc
+	* redo restores oldest undo
+	* any action other than redo after undo reset undo/redo head to the front
