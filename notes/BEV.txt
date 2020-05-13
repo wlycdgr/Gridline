@@ -1,0 +1,44 @@
+Gridline v0.1 BEV (Bird's Eye View) document
+
+REQUIRED
+
+Start/quit/save/load
+	1 User can start the application and be presented with a blank grid to draw on, along with all UI elements
+	2 User can save their current drawing
+	3 User can load any drawing they have previously saved
+	4 User can abandon their current drawing and start a new one without restarting the application
+	5 User can quit the application
+	
+Export
+	20 User can export to at least one standard image format (JPEG, PNG, etc)
+
+Draw
+	40 User can draw one line between each pair of points
+	
+Undo/redo
+	60 User can undo all the way back to a blank grid, including after loading a saved file
+	61 User can redo
+	
+Select
+	80 User can select any line or group of lines one by one
+	81 User can select any dots or dots
+	82 User can select all lines connected to the selected dot or dots
+	
+Move
+	100 User can shift any selected line or group of lines up, down, left, or right
+	
+Delete
+	120 User can delete any selected line or group of lines
+
+Visibility toggle
+	140 User can toggle the visibility of any selected line or group of lines
+	141 User can toggle the visibility of the grid
+
+
+OPTIONAL
+* Layers
+* Customize grid parameters
+* Customize line parameters
+* Select and colorfill segments created by the intersections of the drawn lines
+* Selecting two dots and swapping them
+* Easy social sharing

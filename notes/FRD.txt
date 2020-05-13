@@ -1,0 +1,17 @@
+Gridline v0.1 FRD
+Specifies the UX for the BEV line items
+
+BEV-1: User can start the application and be presented with a blank grid to draw on, along with all UI elements
+	X Gridline runs in a 1280x720 window
+	X There are no loading or logo screens
+	X The grid is centered in the window
+	X The grid is composed of 32 rows and 32 columns of dots
+	X The dots are black circles of radius 1 when not selected, and black circles of radius 4 when selected
+	X The horizontal and vertical distance between the dots is 16
+	
+BEV-2: User can save their current drawing
+	O User can press Ctrl+S to save
+	O User can click "Save" button to save
+	O User is prompted to save if they try to quit the application when they have unsaved changes
+	O User is prompted to save if they try to start a new drawing when they have unsaved changes
+	O The prompt takes the form of a modal that requires user to choose from "Save", "Cancel", and "Don't Save"
